@@ -1,0 +1,68 @@
+<scroll-view scroll-y="{{true}}" class='scrollPage' style='height:1640rpx'>
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+    <view slot="content">我的</view>
+  </cu-custom>
+  <view class='UCenter-bg'>
+    <open-data type="userAvatarUrl" class='png' mode='widthFix'></open-data>
+    <open-data type="userNickName" lang="zh_CN" class='text-xl'></open-data>
+    <image src='/images/wave.gif' mode='scaleToFill' class='gif-wave'></image>
+  </view>
+  <view class='padding flex text-center text-grey bg-white shadow-warp'>
+    <view class='flex flex-sub flex-direction solid-right'>
+      <navigator class="margin-top-sm" url='/pages/orderForm/orderForm' hover-class='none'>
+        <text class='icon-attentionfill text-pink'></text> 我的记录
+      </navigator>
+    </view>
+    <view class='flex flex-sub flex-direction'>
+      <navigator class="margin-top-sm" url='/pages/locate/locate' hover-class='none'>
+        <text class='icon-fork text-yellow'></text> 我的地址
+      </navigator>
+    </view>
+  </view>
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="icon-title text-orange "></text>个人信息
+    </view>
+  </view>
+  <view class='cu-list menu sm-border'>
+    <view class='cu-item'>
+      <view class='content'>
+        <text class='icon-form text-green'></text>
+        <text class='text-gray'>姓名</text>
+      </view>
+      <view class='action'>
+        <text class='text-gray'>{{userInfo.name}}</text>
+      </view>
+    </view>
+    <view class='cu-item'>
+      <view class='content'>
+        <text class='icon-phone text-olive'></text>
+        <text class='text-gray'>电话</text>
+      </view>
+      <view class='action '>
+        <text class='text-gray'>{{userInfo.phone}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="icon-title text-orange "></text>账户安全
+    </view>
+  </view>
+  <view class='cu-list menu sm-border' catchtap='show'>
+    <view class='cu-item arrow'>
+      <view class='content'>
+        <text class='icon-warn text-red'></text>
+        <text class='text-gray'>修改密码</text>
+      </view>
+    </view>
+  </view>
+  <view class="flex flex-direction padding">
+    <button class="cu-btn lg bg-red shadow-blur" bindtap="UnLogin">退出登陆</button>
+  </view>
+</scroll-view>
+<view class="cu-modal show" wx:if="{{!hideChange}}" bindtap='hide'>
+  <view class="cu-dialog" catchtap='show'>
+    <change bindconfirm='hide' />
+  </view>
+</view>

@@ -1,0 +1,171 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+  <view slot="content">新建记录</view>
+</cu-custom>
+<scroll-view wx:if="{{hidden.area}}"scroll-x class="bg-green light nav text-center" scroll-with-animation="{{true}}">
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
+    <view class='text-cyan'>
+    <text class="icon-upstagefill"></text> 新建地址</view>
+  </view>
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
+    <view class='text-olive'>
+      <text class="icon-clothesfill"></text> 使用旧地址</view>
+  </view>
+</scroll-view>
+<swiper current='{{TabCur}}' bindchange='switchTab' circular='{{false}}' style='height:100vh'>
+  <swiper-item>
+    <text class='margin-sm block'>联系信息</text>
+    <form>
+      <view class="cu-form-group">
+        <view class='action'>
+          <text class="icon-form text-orange padding-right-sm "></text>姓名
+        </view>
+        <input value='{{userInfo.name}}' style="width:200rpx" class='text-right text-gray' disabled='{{true}}'></input>
+      </view>
+      <view class="cu-form-group">
+        <view class='action'>
+          <text class="icon-phone text-orange padding-right-sm "></text>电话
+        </view>
+        <input value='{{userInfo.phone}}' style="width:300rpx" class='text-right text-gray' disabled='{{true}}'></input>
+      </view>
+    </form>
+    <text class='margin-sm block'>校区</text>
+    <view class="cu-bar bg-white margin-top-sm" bindtap="showSchoolModal">
+      <view class="action">
+        <text class="icon-title text-orange "></text> {{schoolIndex != null ? pickerSchool[schoolIndex] : '请选择'}}
+      </view>
+      <view class='cu-list menu'>
+        <view class='cu-item arrow' />
+      </view>
+    </view>
+
+    <view class="cu-modal bottom-modal show" hidden="{{hidden.school}}" bindtap="hideSchoolModal">
+      <view class="cu-dialog" style='height:65%' catchtap='show'>
+        <view class="cu-bar bg-white">
+          <view class="action text-green">请选择校区</view>
+          <view class="action text-blue" catchtap="hideSchoolModal">取消</view>
+        </view>
+        <view class="padding-top-sm">
+          <radio-group class="block">
+            <view class="cu-list menu text-left">
+              <view class="cu-item" wx:for="{{pickerSchool}}" wx:key catchtap="hideSchoolModal" data-index='{{index}}'>
+                <label class="flex justify-between align-center flex-sub">
+                  <view class="flex-sub">{{item}}</view>
+                  <radio class="round"></radio>
+                </label>
+              </view>
+            </view>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-modal show" hidden="{{hidden.error}}" bindtap="hideErrorModal">
+      <view class="cu-dialog">
+        <view class="margin flex-sub  solid-left ">未选择校区</view>
+      </view>
+    </view>
+    <text class='margin-sm block'>区域楼栋</text>
+    <view class="cu-bar bg-white margin-top-sm" bindtap="showAreaModal" data-id='0'>
+      <view class="action arrow">
+        <text class="icon-title text-orange "></text> {{areaIndex== null ? '请选择':areaList[0][areaIndex]}}
+      </view>
+      <view class='cu-list menu'>
+        <view class='cu-item arrow' />
+      </view>
+    </view>
+    <view class="cu-bar bg-white margin-top-sm" bindtap="showAreaModal" data-id='1'>
+      <view class="action arrow">
+        <text class="icon-title text-orange "></text>{{ buildingIndex != null?areaList[1][buildingIndex]:'请选择'}}
+      </view>
+      <view class='cu-list menu'>
+        <view class='cu-item arrow' />
+      </view>
+    </view>
+    <text class='margin-sm block'>房间</text>
+    <view class="cu-form-group">
+      <view class="title">选择房间</view>
+      <picker mode="multiSelector" style='width:540rpx' bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+          {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} {{multiArray[2][multiIndex[2]]}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-modal bottom-modal show" hidden="{{hidden.area}}" bindtap="hideAreaModal">
+      <view class="cu-dialog" style='height:65%' catchtap='show'>
+        <view class="cu-bar bg-white">
+          <view class="action text-green">所在区域</view>
+          <view class="action text-blue" catchtap="hideAreaModal">取消</view>
+        </view>
+        <view class="padding-top-sm" style='height:50vh'>
+          <scroll-view scroll-x='{{true}}' class="bg-white nav text-left" scroll-with-animation scroll-left="{{scrollLeft}}">
+            <view class="cu-item {{index==AreaTabCur?'text-green cur':''}}" wx:for="{{areaNavPicker}}" wx:key bindtap="tabSelectArea" data-id="{{index}}">{{item}}
+            </view>
+          </scroll-view>
+          <swiper current='{{AreaTabCur}}' bindchange='switchTabArea' circular='{{true}}' style='height:100%'>
+            <swiper-item wx:for="{{areaList}}" wx:key wx:for-item='it' wx:for-index='in'>
+              <scroll-view scroll-y="{{true}}" class='scrollPage' style='height:100%;overflow:auto'>
+                <radio-group class="block">
+                  <view class="cu-list menu text-left">
+                    <view wx:for="{{it}}" class="cu-item" wx:key=''>
+                      <label class="flex justify-between align-center flex-sub" catchtap="{{in==0?'setArea':'hideAreaModal'}}" data-index='{{index}}'>
+                        <view class="flex-sub">{{item}}</view>
+                        <radio class="round"></radio>
+                      </label>
+                    </view>
+                  </view>
+                </radio-group>
+              </scroll-view>
+            </swiper-item>
+          </swiper>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view wx:if="{{locateList.length!=0}}">
+  <view class="solid-bottom text-lg margin-top padding bg-white">
+    <text class=" icon-roundcheckfill text-green padding-right-sm"></text>
+    <text class='title text-center'>共有{{locateList.length ? locateList.length:0}}个地址</text>
+  </view>
+  <radio-group class='block'>
+  <view wx:for="{{locateList}}" wx:key>
+    <view class='cu-list menu sm-border margin-top'>
+      <view class="cu-item padding-tb-sm">
+      <label class="flex justify-between align-center flex-sub" catchtap='RadioLocate' data-index="{{index}}">
+        <view class='content'>
+          <view class='text-grey text-sm'>
+            <text class="icon-clothesfill text-blue margin-right-xs"></text> 校区：{{item.school}}校区</view>
+          <view class='text-grey text-sm'>
+            <text class="icon-locationfill text-green margin-right-xs"></text> 楼栋：{{item.area}}{{item.building}}</view>
+          <view class='text-grey text-sm'>
+            <text class="icon-homefill text-red margin-right-xs"></text> 房间：{{item.room || "无指定房间"}}</view>
+        </view>
+        <view class='action'>
+          <radio checked="{{index==locateIndex}}"class='round'></radio>
+        </view>
+      </label>
+      </view>
+    </view>
+  </view>
+  </radio-group>
+</view>
+
+<view wx:else>
+  <view class="flex margin">
+    <view class="flex-sub radius shadow-lg">
+      <image src="/images/noOrder.jpg" mode="aspectFit" class="response" style="height:400rpx"></image>
+    </view>
+  </view>
+  <view class='text-center block'>
+    <text class='title'> 暂无地址</text>
+  </view>
+  <view class='text-center block'>
+    <text class='text-sm text-grey'>可以添加新的地址</text>
+  </view>
+</view>
+  </swiper-item>
+</swiper>
+<button class="send cu-btn bg-blue shadow" bindtap="Submit">
+  <text class='icon-lightfill text-white word text-center'>提交</text>
+</button>
+<view class='cu-tabbar-height'></view>

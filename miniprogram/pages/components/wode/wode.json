@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents":{
+    "change":"../../changePass/changePass"
+  }
+}

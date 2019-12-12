@@ -1,0 +1,33 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+  <view slot="content">首页</view>
+</cu-custom>
+<view wx:if="{{hide}}" class="margin flex">
+  <view class="bg-white flex-sub radius shadow-lg">
+    <image src="/images/rhomb-white.gif" mode="aspectFit" class="gif-white response" style="height:400rpx"></image>
+  </view>
+</view>
+<view class='margin' hidden='{{hide}}'>
+  <view class="bg-img bg-mask padding-tb-xl padding-top" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg');height: 414rpx;">
+    <view class="padding-xl text-white">
+      <view class="padding-xs text-xl text-center">
+        首页推荐以及广告
+      </view>
+      <view class="padding-xs text-center">
+        Only the guilty need fear me.
+      </view>
+    </view>
+  </view>
+  <view class="grid col-2 grid-square">
+    <view class='bg-img'>
+      <image src='/images/girl2.jpg' style='width:365rpx;height:206rpx'></image>
+    </view>
+    <view class='bg-img'>
+      <image src='/images/bg_souye1.jpg' style='width:365rpx;height:206rpx'></image>
+    </view>
+  </view>
+  <view class="flex margin-left margin-right">
+    <view class="bg-white flex-sub radius shadow-lg">
+      <image src="/images/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:250rpx"></image>
+    </view>
+  </view>
+</view>

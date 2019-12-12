@@ -1,0 +1,18 @@
+<new wx:if="{{PageCur=='new'}}" locateIndex="{{locateIndex}}"></new>
+<shouye wx:if="{{PageCur=='shouye'}}"></shouye>
+<wode wx:if="{{PageCur=='wode'}}"></wode>
+<view class="cu-bar tabbar shadow foot bg-white">
+    <view class="action {{PageCur=='shouye'?'text-blue':'text-gray'}}" bindtap="NavChange" data-cur="shouye">
+      <view class="icon-home"></view> 首页
+    </view>
+    <view class="action {{PageCur=='new'?'text-blue':'text-gray'}} add-action" bindtap="NavChange" data-cur="new">
+      <button class="cu-btn icon-add bg-blue shadow"></button>
+      添加地址
+    </view>
+    <view class="action {{PageCur=='wode'?'text-blue':'text-gray'}}" bindtap="NavChange" data-cur="wode">
+      <view class="icon-my">
+        <view class="cu-tag badge"></view>
+      </view>
+      我的
+    </view>
+</view>

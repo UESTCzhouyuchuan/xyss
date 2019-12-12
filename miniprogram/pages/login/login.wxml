@@ -1,0 +1,36 @@
+<view wx:if="{{!login}}">
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+    <view slot="content">登陆</view>
+  </cu-custom>
+  <view class='text-center'>
+    <image src='/images/school.jpg' style='width:750rpx;height:280rpx'></image>
+  </view>
+  <form>
+    <view class='cu-form-group'>
+      <view class='title' decode="{{true}}">手机号</view>
+      <input placeholder='请输入手机号' bindinput='PhoneBlur' maxlength='11' type='number'>
+      </input>
+    </view>
+    <view class='cu-form-group'>
+      <text class='title' decode="{{true}}">密码&nbsp;&nbsp;&nbsp;</text>
+      <input placeholder='请输入密码' bindinput='PassBlur' maxlength='25' password='{{true}}'></input>
+    </view>
+  </form>
+  <view class="flex flex-direction padding">
+    <button class="cu-btn lg bg-yellow shadow" bindtap="ConfirmLogin">登陆</button>
+  </view>
+
+  <view class='flex justify-between'>
+    <view class='text-black padding-left' catchtap='Register'>注册账号</view>
+    <view class='text-black padding-right'>忘记密码</view>
+  </view>
+</view>
+<view wx:else class='margin'>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+    <view slot="content"> </view>
+</cu-custom>
+<view class="bg-white flex-sub radius shadow-lg">
+    <image src="/images/rhomb-white.gif" mode="aspectFit" class="gif-white response" style="height:400rpx"></image>
+  </view>
+  
+</view>

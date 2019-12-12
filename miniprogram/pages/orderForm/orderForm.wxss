@@ -1,0 +1,16 @@
+/* pages/orderForm/orderForm.wxss */
+.backImage{
+  background-color: #FFFFEE;
+  background-size: cover;
+  border-radius: 8rpx; 
+  margin: 30rpx 25rpx;
+  padding: 10rpx ;
+  height:370rpx;
+  position: relative;
+  box-shadow: 0px 4px 4px 0px rgba(7, 17, 27, 0.1);
+}
+.backImage text{
+  opacity: 1;
+  display: block;
+  padding: 10rpx;
+}

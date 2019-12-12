@@ -1,0 +1,37 @@
+<!--pages/locate/locate.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isCustom="{{true}}">
+  <view slot="content">我的地址</view>
+</cu-custom>
+<view wx:if="{{locateList.length!=0}}">
+  <view class="solid-bottom text-lg margin-top padding bg-white">
+    <text class=" icon-roundcheckfill text-green padding-right-sm"></text>
+    <text class='title text-center'>共有{{locateList.length}}个地址</text>
+  </view>
+  <view wx:for="{{locateList}}" wx:key catchtap='ToNew' data-index = '{{index}}'>
+    <view class='cu-list menu sm-border margin-top'>
+      <view class="cu-item padding-tb-sm arrow">
+        <view class='content'>
+          <view class='text-grey text-sm'>
+            <text class="icon-clothesfill text-blue margin-right-xs"></text> 校区：{{item.school}}校区</view>
+          <view class='text-grey text-sm'>
+            <text class="icon-locationfill text-green margin-right-xs"></text> 楼栋：{{item.area}}{{item.building}}</view>
+          <view class='text-grey text-sm'>
+            <text class="icon-homefill text-red margin-right-xs"></text> 房间：{{item.room || "无指定房间"}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:else>
+  <view class="flex margin">
+    <view class="flex-sub radius shadow-lg">
+      <image src="/images/noOrder.jpg" mode="aspectFit" class="response" style="height:400rpx"></image>
+    </view>
+  </view>
+  <view class='text-center block'>
+    <text class='title'> 暂无地址</text>
+  </view>
+  <view class='text-center block'>
+    <text class='text-sm text-grey'>可以想想是否要送水</text>
+  </view>
+</view>

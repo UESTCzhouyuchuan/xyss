@@ -1,0 +1,17 @@
+<form class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
+  <view class='cu-form-group'>
+    <view class='title'>旧密码</view>
+    <input placeholder="输入旧密码" password="{{true}}" bindinput='OldPass'></input>
+  </view>
+  <view class='cu-form-group'>
+    <view class='title'>新密码</view>
+    <input placeholder='输入新密码' password="{{true}}"bindinput='NewPass'></input>
+  </view>
+  <view class='cu-form-group'>
+    <view class='title'>确认密码</view>
+    <input placeholder='重新输入新密码' password="{{true}}"bindinput='RepNewPass'></input>
+  </view>
+</form>
+<view class="cu-bar btn-group margin-top-xl">
+    <button class="cu-btn bg-green shadow-blur" bindtap="confirmInfo">确认修改</button>
+</view>

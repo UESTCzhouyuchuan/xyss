@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "new":"/pages/components/new/new",
+    "shouye": "/pages/components/shouye/shouye",
+    "wode": "/pages/components/wode/wode"
+  }
+}

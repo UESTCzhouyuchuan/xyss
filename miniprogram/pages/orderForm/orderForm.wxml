@@ -1,0 +1,43 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">我的记录</view>
+</cu-custom>
+<view wx:if="{{orders==null}}" class="flex margin" >
+  <view class="bg-white flex-sub radius shadow-lg">
+    <image src="/images/loading-1.gif" mode="aspectFit" class="gif-white response" style="height:350rpx"></image>
+  </view>
+</view>
+<view wx:else >
+  <view wx:if="{{orders.length!=0}}">
+    <view class="solid-bottom text-lg margin-top padding bg-white">
+      <text class=" icon-roundcheckfill text-green padding-right-sm"></text>
+      <text class='title text-center'>共有{{orders.length}}个记录</text>
+    </view>
+    <view wx:for="{{orders}}" wx:key>
+      <view class='backImage'>
+        <text class='text text-pink' >时间：{{item.time}}</text>
+        <text class='text-sm '>校区：{{item.place.school}}</text>
+        <text class='text-sm '>楼栋：{{item.place.area}}/{{item.place.building}}</text>
+        <text class='text-sm text-balck'>房间：{{item.place.room || "无指定房间"}}</text>
+        <text class='text-sm text-blue'>联系电话：{{item.user.phone}}</text>
+        <text class="text-sm text-mauve" style='float:left' >记录号: {{item.orderNum}}</text>
+        <text class='action text-sm text-green' style='overflow:auto;text-align:right'>状态:已经送达</text>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+    </cu-custom>
+    <view class="flex margin">
+      <view class="flex-sub radius shadow-lg">
+        <image src="/images/noOrder.jpg" mode="aspectFit" class="response" style="height:400rpx"></image>
+      </view>
+    </view>
+    <view class='text-center block'>
+      <text class='title'> 暂无记录</text>
+    </view>
+    <view class='text-center block'>
+      <text class='text-sm text-grey'>可以想想是否要送水</text>
+    </view>
+  </view>
+</view>

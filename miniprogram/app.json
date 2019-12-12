@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/testYun/testYun",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/components/wode/wode",
+    "pages/components/shouye/shouye",
+    "pages/components/new/new",
+    "pages/changePass/changePass",
+    "pages/register/register",
+    "pages/orderForm/orderForm"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": false
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

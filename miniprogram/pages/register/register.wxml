@@ -1,0 +1,41 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">注册</view>
+</cu-custom>
+<form class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
+  <view class='cu-form-group'>
+    <text class='title' decode='{{true}}'>姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+    <input placeholder='请输入姓名' bindinput='NameBlur'></input>
+  </view>
+  <view class="cu-form-group">
+    <text class="title" decode='{{true}}'>手机号码&nbsp;&nbsp;&nbsp;&nbsp;</text>
+    <input placeholder="输入手机号码" maxlength='11'type='number'bindinput='PhoneBlur'></input>
+    <view class="cu-capsule radius">
+      <view class="cu-tag bg-blue">
+        +86
+      </view>
+      <view class="cu-tag line-blue">
+        中国大陆
+      </view>
+    </view>
+  </view>
+  <!-- <view class='cu-form-group'>
+    <view class='title'>短信验证码</view>
+    <input placeholder='请输入验证码' type="number"bindblur=''></input>
+    <button class="cu-btn bg-green shadow">获得验证码</button>
+  </view> -->
+  <view class='cu-form-group'>
+    <text class='title' decode='{{true}}'>密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+    <input placeholder='请输入密码' password="{{true}}" maxlength='25' bindinput='PassBlur'></input>
+  </view>
+  <view class='cu-form-group'>
+    <text class='title' decode='{{true}}'>确认密码&nbsp;&nbsp;&nbsp;&nbsp;</text>
+    <input placeholder='请重新输入新密码' password="{{true}}"bindinput='RepNewPass'></input>
+  </view>
+</form>
+<view class="flex flex-direction padding">
+    <button class="cu-btn bg-green lg shadow" bindtap="Register">注册</button>
+</view>
+<navigator class="flex flex-direction padding" open-type='navigateBack'>
+    <button class="cu-btn line-green lg shadow-blur">返回登陆</button>
+</navigator>

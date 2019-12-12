@@ -1,0 +1,20 @@
+.send {
+  position: fixed;
+  _position: relative;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  bottom: 130rpx;
+  right: 50rpx;
+  background-color: royalblue;
+  box-shadow: 1px 1px 1px rosybrown;
+}
+
+.word {
+  margin: 0;
+  position: absolute;
+  width: 100rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
